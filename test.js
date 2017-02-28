@@ -1,5 +1,5 @@
 const test = require('ava')
-const pizza = require('./pizza')
+const pizzaExport = require('./pizza')
 
 var cases = [
   {category: 'Ones', dice: [1,2,3,4,5], expected: 1},
@@ -38,7 +38,7 @@ var cases = [
 
 test('yields expected result', t => {
   for(var i=0; i< cases.length; i++){
-    var actual = pizza.yahtzee(cases[i].category, cases[i].dice)
+    var actual = pizzaExport.pizza.yahtzee(cases[i].category, cases[i].dice)
 
     t.is(cases[i].expected, actual)
   }
@@ -55,7 +55,7 @@ const cases2 = [
 
 test('yields expected result for objectMaker', t => {
   cases2.forEach( (c, i) => {
-    const actual = objectMaker(cases2[i].dice)
+    const actual = pizzaExport.objectMaker(cases2[i].dice)
 
     t.deepEqual(cases2[i].expected, actual)
   })
@@ -73,7 +73,7 @@ const cases3 = [
 
 test('yields expected result for findTheIndexOfAMatch ', t => {
   cases3.forEach( (c, i) => {
-    const actual = findTheIndexOfAMatch(cases3[i].obj, cases3[i].num)
+    const actual = pizzaExport.findTheIndexOfAMatch(cases3[i].obj, cases3[i].num)
 
     t.is(cases3[i].expected, actual)
   })
@@ -87,15 +87,15 @@ const cases4 = [
 
 test('yields expected result for compareFunc', t => {
   cases4.forEach( (c, i) => {
-    const actual = compareFunc(cases4[i].a, cases4[i].b)
+    const actual = pizzaExport.compareFunc(cases4[i].a, cases4[i].b)
 
     t.is(cases4[i].expected, actual)
   })
 })
 
-const compareFunc = (a, b) => {
-  return a - b
-}
+// const compareFunc = (a, b) => {
+//   return a - b
+// }
 
 
 const cases5 = [
@@ -107,7 +107,7 @@ const cases5 = [
 
 test('yields expected result for compareFunc', t => {
   cases5.forEach( (c, i) => {
-    const actual = removeDuplicated(cases5[i].arr)
+    const actual = pizzaExport.removeDuplicated(cases5[i].arr)
 
     t.deepEqual(cases5[i].expected, actual)
   })
@@ -122,39 +122,39 @@ const cases6 = [
 
 test('yields expected result for compareFunc', t => {
   cases6.forEach( (c, i) => {
-    const actual = samezies(cases6[i].arr)
+    const actual = pizzaExport.samezies(cases6[i].arr)
 
     t.true(cases6[i].expected, actual)
   })
 })
 
-const samezies = (arr) => {
-  return arr.every( (c, i, a) => {
-    return c === arr[0]
-  })
-}
-
-const objectMaker = (dice) => {
-    let diceObj = {}
-    dice.map( (c, i) => {
-      diceObj[c] = diceObj[c] + 1 || 1
-    })
-    return diceObj
-}
-
-const removeDuplicated = (arr) => {
-  return arr.filter((c,i,a) => {
-    return a.indexOf(c) == i
-  })
-}
-
-const findTheIndexOfAMatch = (obj, num) => {
-  const arr = Object.values(obj)
-  let match = 'no points'
-  arr.forEach( (c, i) => {
-    if (c === num) {
-      match = i
-    }
-  })
-  return match
-}
+// const samezies = (arr) => {
+//   return arr.every( (c, i, a) => {
+//     return c === arr[0]
+//   })
+// }
+//
+// const objectMaker = (dice) => {
+//     let diceObj = {}
+//     dice.map( (c, i) => {
+//       diceObj[c] = diceObj[c] + 1 || 1
+//     })
+//     return diceObj
+// }
+//
+// const removeDuplicated = (arr) => {
+//   return arr.filter((c,i,a) => {
+//     return a.indexOf(c) == i
+//   })
+// }
+//
+// const findTheIndexOfAMatch = (obj, num) => {
+//   const arr = Object.values(obj)
+//   let match = 'no points'
+//   arr.forEach( (c, i) => {
+//     if (c === num) {
+//       match = i
+//     }
+//   })
+//   return match
+// }
