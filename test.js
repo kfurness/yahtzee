@@ -1,5 +1,6 @@
 const test = require('ava')
-const pizzaExport = require('./pizza')
+// const pizzaExport = require('./pizza')
+import * as pizzaExport from './pizza'
 
 var cases = [
   {category: 'Ones', dice: [1,2,3,4,5], expected: 1},
