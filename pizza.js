@@ -74,7 +74,7 @@ module.exports = {
     yahtzee : (category, dice) =>{
       let filter = 1
       let obj = module.exports.objectMaker(dice)
-      let valArr = Object.values(obj)
+       let valArr = Object.values(obj)
       let ordered = dice.sort(module.exports.compareFunc())
       switch(category){
         case 'Twos':
