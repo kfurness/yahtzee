@@ -71,10 +71,11 @@
 
 module.exports = {
   pizza: {
-    yahtzee : (category, dice) =>{
+    yahtzee : (category, dice) => {
       let filter = 1
       let obj = module.exports.objectMaker(dice)
-       let valArr = Object.values(obj)
+       let keys = Object.keys(obj)
+       let valArr = keys.map( key =>  obj[key])
       let ordered = dice.sort(module.exports.compareFunc())
       switch(category){
         case 'Twos':
@@ -114,7 +115,7 @@ module.exports = {
   },
 
   findTheIndexOfAMatch: function(obj, num) {
-    const arr = Object.values(obj)
+    const arr = Object.keys(obj).map( key => obj[key])
     let match = 'no points'
     arr.forEach( (c, i) => {
       if (c === num) {

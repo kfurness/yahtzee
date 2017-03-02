@@ -3,3 +3,9 @@ const state = {
 }
 
 window.yahtzee = Object.assign({}, {state})
+
+// module.exports = {
+//   state : {
+//     ThreeKindOMG: 0
+//   }
+// }

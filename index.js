@@ -13,6 +13,7 @@ const rollTheDie = (e) => {
   //return roll
   //TODO: actually call pizza yahtzee here
   window.yahtzee.state = reduce({category: 'ThreeOfKindOMG', value: 8}, window.yahtzee.state)
+  console.log(update(window.yahtzee.state));
   update(window.yahtzee.state)
 }
 
