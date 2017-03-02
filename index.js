@@ -16,7 +16,7 @@ const rollTheDie = (e) => {
   //return roll
   // TODO update msg (first parameter of reduce) to reflect roll
   //TODO: actually call pizza yahtzee here
-  window.yahtzee.state = reduce({category: 'Fivez', value: 10}, window.yahtzee.state)
+  window.yahtzee.state = reduce({category: 'Sixes', value: 12}, window.yahtzee.state)
   update(window.yahtzee.state)
 }
 

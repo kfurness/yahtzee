@@ -4,6 +4,7 @@ const state = {
   Threez: 0,
   Fourz: 0,
   Fivez: 0,
+  Sixes: 0,
   ThreeKindOMG: 0
 }
 

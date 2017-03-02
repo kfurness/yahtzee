@@ -18,7 +18,7 @@ export const pizza = {
       case 'Fivez':
         filter = 5
         break
-      case 'Six-iz':
+      case 'Sixes':
         filter = 6
         break
       case '3kindomg':

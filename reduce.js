@@ -11,6 +11,8 @@ export const reduce = (msg, state) => {
       return Object.assign({}, state, {Fourz: msg.value})
     case 'Fivez':
       return Object.assign({}, state, {Fivez: msg.value})
+    case 'Sixes':
+      return Object.assign({}, state, {Sixes: msg.value})
     case 'ThreeKindOMG':
       return Object.assign({}, state, {ThreeKindOMG: msg.value})
     default:
