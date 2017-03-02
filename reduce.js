@@ -1,15 +1,4 @@
 
-
 export const reduce = (msg, state) => {
-  return {ThreeKindOMG: msg.value}
+  return msg.category === "Ones" ? {Ones: msg.value} : {ThreeKindOMG: msg.value}
 }
-
-// if(typeof(module) !== 'undefined'){
-//   module.exports = reduce
-// }
-
-// module.exports = {
-//   reduce: (msg, state) => {
-//       return {ThreeKindOMG: msg.value}
-//   }
-// }

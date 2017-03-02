@@ -77,18 +77,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var reduce = exports.reduce = function reduce(msg, state) {
-  return { ThreeKindOMG: msg.value };
+  return msg.category === "Ones" ? { Ones: msg.value } : { ThreeKindOMG: msg.value };
 };
-
-// if(typeof(module) !== 'undefined'){
-//   module.exports = reduce
-// }
-
-// module.exports = {
-//   reduce: (msg, state) => {
-//       return {ThreeKindOMG: msg.value}
-//   }
-// }
 
 /***/ }),
 /* 1 */
@@ -130,6 +120,7 @@ var rollTheDie = function rollTheDie(e) {
   createDie(roll);
   rollDieButton.style.visibility = 'hidden';
   //return roll
+  // TODO update msg (first parameter of reduce) to reflect roll
   //TODO: actually call pizza yahtzee here
   window.yahtzee.state = (0, _reduce.reduce)({ category: 'ThreeOfKindOMG', value: 8 }, window.yahtzee.state);
   (0, _update.update)(window.yahtzee.state);

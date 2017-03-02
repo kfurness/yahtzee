@@ -14,3 +14,18 @@ test('should apply three of a kind correctly', t => {
     t.deepEqual(actual, cases3oKind[i].expected)
   })
 })
+
+
+let casesOnes = [
+  {expected: {Ones: 3}, msg: {category: 'Ones', value: 3}, state: {Ones: 0}},
+  {expected: {Ones: 2}, msg: {category: 'Ones', value: 2}, state: {ThreeKindOMG: 0}},
+  {expected: {Ones: 1}, msg: {category: 'Ones', value: 1}, state: {ThreeKindOMG: 0}},
+]
+
+test('should apply Ones correctly', t => {
+  casesOnes.forEach( (c,i) => {
+    const actual = reduceExport.reduce(casesOnes[i].msg, casesOnes[i].state)
+
+    t.deepEqual(actual, casesOnes[i].expected)
+  })
+})
