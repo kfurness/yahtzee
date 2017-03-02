@@ -15,6 +15,12 @@ export const pizza = {
       case 'Fourz':
         filter = 4
         break
+      case 'Fivez':
+        filter = 5
+        break
+      case 'Six-iz':
+        filter = 6
+        break
       case '3kindomg':
         return valArr.includes(3) ? 18 : 0
       case '4okind':

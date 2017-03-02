@@ -3,6 +3,7 @@ const state = {
   Twos: 0,
   Threez: 0,
   Fourz: 0,
+  Fivez: 0,
   ThreeKindOMG: 0
 }
 

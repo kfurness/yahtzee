@@ -9,6 +9,8 @@ export const reduce = (msg, state) => {
       return Object.assign({}, state, {Threez: msg.value})
     case 'Fourz':
       return Object.assign({}, state, {Fourz: msg.value})
+    case 'Fivez':
+      return Object.assign({}, state, {Fivez: msg.value})
     case 'ThreeKindOMG':
       return Object.assign({}, state, {ThreeKindOMG: msg.value})
     default:
