@@ -1,7 +1,8 @@
 const state = {
   Ones: 0,
   Twos: 0,
-  Threes: 0,
+  Threez: 0,
+  Fourz: 0,
   ThreeKindOMG: 0
 }
 

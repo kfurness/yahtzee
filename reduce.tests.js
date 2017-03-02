@@ -4,14 +4,15 @@ var reduceExport = require('./reduce')
 const state = {
   Ones: 0,
   Twos: 0,
-  Threes: 0,
+  Threez: 0,
+  Fourz: 0,
   ThreeKindOMG: 0,
 }
 
 let cases3oKind = [
-  {expected: {Ones: 0, Twos: 0, Threes: 0, ThreeKindOMG: 6}, msg: {category: 'ThreeKindOMG', value: 6}, state: state},
-  {expected: {Ones: 0, Twos: 0, Threes: 0, ThreeKindOMG: 8}, msg: {category: 'ThreeKindOMG', value: 8}, state: state},
-  {expected: {Ones: 0, Twos: 0, Threes: 0, ThreeKindOMG: 18}, msg: {category: 'ThreeKindOMG', value: 18}, state: state},
+  {expected: {Ones: 0, Twos: 0, Threez: 0, Fourz: 0, ThreeKindOMG: 6}, msg: {category: 'ThreeKindOMG', value: 6}, state: state},
+  {expected: {Ones: 0, Twos: 0, Threez: 0, Fourz: 0, ThreeKindOMG: 8}, msg: {category: 'ThreeKindOMG', value: 8}, state: state},
+  {expected: {Ones: 0, Twos: 0, Threez: 0, Fourz: 0, ThreeKindOMG: 18}, msg: {category: 'ThreeKindOMG', value: 18}, state: state},
 ]
 
 test('should apply three of a kind correctly', t => {
@@ -24,9 +25,9 @@ test('should apply three of a kind correctly', t => {
 
 
 let casesOnes = [
-  {expected: {Ones: 3, Twos: 0,  Threes: 0, ThreeKindOMG: 0}, msg: {category: 'Ones', value: 3}, state: state},
-  {expected: {Ones: 2, Twos: 0,  Threes: 0, ThreeKindOMG: 0}, msg: {category: 'Ones', value: 2}, state: state},
-  {expected: {Ones: 1, Twos: 0,  Threes: 0, ThreeKindOMG: 0}, msg: {category: 'Ones', value: 1}, state: state},
+  {expected: {Ones: 3, Twos: 0,  Threez: 0, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Ones', value: 3}, state: state},
+  {expected: {Ones: 2, Twos: 0,  Threez: 0, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Ones', value: 2}, state: state},
+  {expected: {Ones: 1, Twos: 0,  Threez: 0, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Ones', value: 1}, state: state},
 ]
 
 test('should apply Ones correctly', t => {
@@ -38,9 +39,9 @@ test('should apply Ones correctly', t => {
 })
 
 let casesTwos = [
-  {expected: {Ones:  0, Twos: 6,  Threes: 0, ThreeKindOMG: 0}, msg: {category: 'Twos', value: 6}, state: state},
-  {expected: {Ones:  0, Twos: 2,  Threes: 0, ThreeKindOMG: 0}, msg: {category: 'Twos', value: 2}, state: state},
-  {expected: {Ones:  0, Twos: 0,  Threes: 0, ThreeKindOMG: 0}, msg: {category: 'Twos', value: 0}, state: state},
+  {expected: {Ones:  0, Twos: 6,  Threez: 0, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Twos', value: 6}, state: state},
+  {expected: {Ones:  0, Twos: 2,  Threez: 0, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Twos', value: 2}, state: state},
+  {expected: {Ones:  0, Twos: 0,  Threez: 0, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Twos', value: 0}, state: state},
 ]
 
 test('should apply Twos correctly', t => {
@@ -51,16 +52,30 @@ test('should apply Twos correctly', t => {
   })
 })
 
-let casesThrees = [
-  {expected: {Ones:  0, Twos: 0, Threes: 3, ThreeKindOMG: 0}, msg: {category: 'Threes', value: 3}, state: state},
-  {expected: {Ones:  0, Twos: 0, Threes: 6, ThreeKindOMG: 0}, msg: {category: 'Threes', value: 6}, state: state},
-  {expected: {Ones:  0, Twos: 0, Threes: 12, ThreeKindOMG: 0}, msg: {category: 'Threes', value: 12}, state: state},
+let casesThreez = [
+  {expected: {Ones:  0, Twos: 0, Threez: 3, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Threez', value: 3}, state: state},
+  {expected: {Ones:  0, Twos: 0, Threez: 6, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Threez', value: 6}, state: state},
+  {expected: {Ones:  0, Twos: 0, Threez: 12, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Threez', value: 12}, state: state},
 ]
 
-test('should apply Threes correctly', t => {
-  casesThrees.forEach( (c,i) => {
-    const actual = reduceExport.reduce(casesThrees[i].msg, casesThrees[i].state)
+test('should apply Threez correctly', t => {
+  casesThreez.forEach( (c,i) => {
+    const actual = reduceExport.reduce(casesThreez[i].msg, casesThreez[i].state)
 
-    t.deepEqual(actual, casesThrees[i].expected)
+    t.deepEqual(actual, casesThreez[i].expected)
+  })
+})
+
+let casesFourz = [
+  {expected: {Ones:  0, Twos: 0, Threez: 0, Fourz: 0, ThreeKindOMG: 0}, msg: {category: 'Fourz', value: 0}, state: state},
+  {expected: {Ones:  0, Twos: 0, Threez: 0, Fourz: 8, ThreeKindOMG: 0}, msg: {category: 'Fourz', value: 8}, state: state},
+  {expected: {Ones:  0, Twos: 0, Threez: 0, Fourz: 12, ThreeKindOMG: 0}, msg: {category: 'Fourz', value: 12}, state: state},
+]
+
+test('should apply Fourz correctly', t => {
+  casesFourz.forEach( (c,i) => {
+    const actual = reduceExport.reduce(casesFourz[i].msg, casesFourz[i].state)
+
+    t.deepEqual(actual, casesFourz[i].expected)
   })
 })

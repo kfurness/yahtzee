@@ -1,11 +1,13 @@
 const ones = document.getElementById('ones')
 const twos = document.getElementById('twos')
-const threes = document.getElementById('threes')
+const threez = document.getElementById('threez')
+const fours = document.getElementById('fourz')
 const threeKind = document.getElementById('threeKind')
 
 export const update = (state) => {
   ones.innerHTML = state.Ones
   twos.innerHTML = state.Twos
-  threes.innerHTML = state.Threes
+  threez.innerHTML = state.Threez
+  fourz.innerHTML = state.Fourz
   threeKind.innerHTML = state.ThreeKindOMG
 }
