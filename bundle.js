@@ -132,7 +132,6 @@ var rollTheDie = function rollTheDie(e) {
   //return roll
   //TODO: actually call pizza yahtzee here
   window.yahtzee.state = (0, _reduce.reduce)({ category: 'ThreeOfKindOMG', value: 8 }, window.yahtzee.state);
-  console.log((0, _update.update)(window.yahtzee.state));
   (0, _update.update)(window.yahtzee.state);
 };
 
