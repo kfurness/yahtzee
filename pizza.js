@@ -21,7 +21,7 @@ export const pizza = {
       case 'Sixes':
         filter = 6
         break
-      case '3kindomg':
+      case 'ThreeKindOMG':
         return valArr.includes(3) ? 18 : 0
       case '4okind':
         let properties = Object.keys(obj)

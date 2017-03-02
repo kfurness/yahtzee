@@ -5,6 +5,7 @@ const fourz = document.getElementById('fourz')
 const fivez = document.getElementById('fivez')
 const sixes = document.getElementById('sixes')
 const threeKind = document.getElementById('threeKind')
+const fourokind = document.getElementById('fourokind')
 
 export const update = (state) => {
   ones.innerHTML = state.Ones
@@ -14,4 +15,5 @@ export const update = (state) => {
   fivez.innerHTML = state.Fivez
   sixes.innerHTML = state.Sixes
   threeKind.innerHTML = state.ThreeKindOMG
+  fourokind.innerHTML = state.Fourokind
 }
