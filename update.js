@@ -1,5 +1,5 @@
 const threeKind = document.getElementById('threeKind')
 
-const update = (state) => {
+export const update = (state) => {
   threeKind.innerHTML = state.ThreeKindOMG
 }

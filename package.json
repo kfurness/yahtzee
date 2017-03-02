@@ -1,0 +1,24 @@
+{
+  "name": "yahtzee",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.1.11",
+    "webpack": "^2.2.1"
+  },
+  "ava": {
+    "require": "babel-register",
+    "babel": {
+      "babelrc": true
+    }
+  },
+  "babel": {
+    "presets": ["@ava/stage-4", "react"]
+  }
+}

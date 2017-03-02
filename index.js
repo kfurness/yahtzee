@@ -1,3 +1,6 @@
+import { reduce } from './reduce'
+import { update } from './update'
+
 const rollDieButton = document.getElementById('rollDie')
 const dice = document.getElementById('dice')
 let roll = []
