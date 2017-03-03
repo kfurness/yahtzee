@@ -7,6 +7,7 @@ const state = {
   Sixes: 0,
   ThreeKindOMG: 0,
   Fourokind: 0,
+  FullHouse: 0,
 }
 
 window.yahtzee = Object.assign({}, {state})

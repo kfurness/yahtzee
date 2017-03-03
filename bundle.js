@@ -94,6 +94,8 @@ var reduce = exports.reduce = function reduce(msg, state) {
       return Object.assign({}, state, { ThreeKindOMG: msg.value });
     case 'Fourokind':
       return Object.assign({}, state, { Fourokind: msg.value });
+    case 'FullHouse':
+      return Object.assign({}, state, { FullHouse: msg.value });
     default:
       return 'error';
   }
@@ -117,6 +119,7 @@ var fivez = document.getElementById('fivez');
 var sixes = document.getElementById('sixes');
 var threeKind = document.getElementById('threeKind');
 var fourokind = document.getElementById('fourokind');
+var fullhouse = document.getElementById('fullHouse');
 
 var update = exports.update = function update(state) {
   ones.innerHTML = state.Ones;
@@ -127,6 +130,7 @@ var update = exports.update = function update(state) {
   sixes.innerHTML = state.Sixes;
   threeKind.innerHTML = state.ThreeKindOMG;
   fourokind.innerHTML = state.Fourokind;
+  fullhouse.innerHTML = state.FullHouse;
 };
 
 /***/ }),
@@ -153,7 +157,7 @@ var rollTheDie = function rollTheDie(e) {
   createDie(roll);
   rollDieButton.style.visibility = 'hidden';
   //return roll
-  // TODO update msg (first parameter of reduce) to reflect roll
+  // TODO update msg (first parameter of reduce) to reflect roll and results of pizza.yahtzee
   //TODO: actually call pizza yahtzee here
   window.yahtzee.state = (0, _reduce.reduce)({ category: 'Fourokind', value: 12 }, window.yahtzee.state);
   (0, _update.update)(window.yahtzee.state);
@@ -369,7 +373,8 @@ var state = {
   Fivez: 0,
   Sixes: 0,
   ThreeKindOMG: 0,
-  Fourokind: 0
+  Fourokind: 0,
+  FullHouse: 0
 };
 
 window.yahtzee = Object.assign({}, { state: state });

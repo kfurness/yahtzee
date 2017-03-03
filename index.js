@@ -14,7 +14,7 @@ const rollTheDie = (e) => {
   createDie(roll)
   rollDieButton.style.visibility = 'hidden'
   //return roll
-  // TODO update msg (first parameter of reduce) to reflect roll
+  // TODO update msg (first parameter of reduce) to reflect roll and results of pizza.yahtzee
   //TODO: actually call pizza yahtzee here
   window.yahtzee.state = reduce({category: 'Fourokind', value: 12}, window.yahtzee.state)
   update(window.yahtzee.state)
