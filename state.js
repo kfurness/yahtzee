@@ -8,6 +8,7 @@ const state = {
   ThreeKindOMG: 0,
   Fourokind: 0,
   FullHouse: 0,
+  SmStraight: 0,
 }
 
 window.yahtzee = Object.assign({}, {state})
