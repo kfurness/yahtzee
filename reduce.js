@@ -21,6 +21,8 @@ export const reduce = (msg, state) => {
       return Object.assign({}, state, {FullHouse: msg.value})
     case 'SmStraight':
       return Object.assign({}, state, {SmStraight: msg.value})
+    case 'FullStraight':
+      return Object.assign({}, state, {FullStraight: msg.value})
     default:
       return 'error'
   }

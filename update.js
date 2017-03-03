@@ -8,6 +8,9 @@ const threeKind = document.getElementById('threeKind')
 const fourokind = document.getElementById('fourokind')
 const fullhouse = document.getElementById('fullHouse')
 const smStraight = document.getElementById('smStraight')
+const fullStraight = document.getElementById('fullStraight')
+const hellzYeahYahtzee = document.getElementById('hellzYeahYahtzee')
+const chance = document.getElementById('chance')
 
 export const update = (state) => {
   ones.innerHTML = state.Ones
@@ -20,4 +23,7 @@ export const update = (state) => {
   fourokind.innerHTML = state.Fourokind
   fullhouse.innerHTML = state.FullHouse
   smStraight.innerHTML = state.SmStraight
+  fullStraight.innerHTML = state.FullStraight
+  hellzYeahYahtzee.innerHTML = state.HellzYeahYahtzee
+  chance.innerHTML = state.Chance
 }

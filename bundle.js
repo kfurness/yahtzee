@@ -98,6 +98,8 @@ var reduce = exports.reduce = function reduce(msg, state) {
       return Object.assign({}, state, { FullHouse: msg.value });
     case 'SmStraight':
       return Object.assign({}, state, { SmStraight: msg.value });
+    case 'FullStraight':
+      return Object.assign({}, state, { FullStraight: msg.value });
     default:
       return 'error';
   }
@@ -123,6 +125,9 @@ var threeKind = document.getElementById('threeKind');
 var fourokind = document.getElementById('fourokind');
 var fullhouse = document.getElementById('fullHouse');
 var smStraight = document.getElementById('smStraight');
+var fullStraight = document.getElementById('fullStraight');
+var hellzYeahYahtzee = document.getElementById('hellzYeahYahtzee');
+var chance = document.getElementById('chance');
 
 var update = exports.update = function update(state) {
   ones.innerHTML = state.Ones;
@@ -135,6 +140,9 @@ var update = exports.update = function update(state) {
   fourokind.innerHTML = state.Fourokind;
   fullhouse.innerHTML = state.FullHouse;
   smStraight.innerHTML = state.SmStraight;
+  fullStraight.innerHTML = state.FullStraight;
+  hellzYeahYahtzee.innerHTML = state.HellzYeahYahtzee;
+  chance.innerHTML = state.Chance;
 };
 
 /***/ }),
@@ -379,7 +387,10 @@ var state = {
   ThreeKindOMG: 0,
   Fourokind: 0,
   FullHouse: 0,
-  SmStraight: 0
+  SmStraight: 0,
+  FullStraight: 0,
+  HellzYeahYahtzee: 0,
+  Chance: 0
 };
 
 window.yahtzee = Object.assign({}, { state: state });
