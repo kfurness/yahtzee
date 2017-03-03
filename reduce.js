@@ -1,6 +1,8 @@
 
 export const reduce = (msg, state) => {
   switch (msg.category) {
+    case 'rolled-dice':
+      return Object.assign({}, state, {roll: msg.value})
     case 'Ones':
       return Object.assign({}, state, {Ones: msg.value})
     case 'Twos':

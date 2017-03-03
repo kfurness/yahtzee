@@ -3,7 +3,7 @@ import { update } from './update'
 import * as pizzaExport from './pizza'
 
 const rollDieButton = document.getElementById('rollDie')
-const dice = document.getElementById('dice')
+// const dice = document.getElementById('dice')
 let roll = []
 
 const rollTheDie = (e) => {
@@ -12,12 +12,14 @@ const rollTheDie = (e) => {
     const randomNum = randomNumber(1,6)
     roll.push(randomNum)
   }
-  createDie(roll)
+
+  window.yahtzee.state = reduce({category:'rolled-dice', value: roll}, window.yahtzee.state)
+  createDieElements(roll)
   rollDieButton.style.visibility = 'hidden'
   // create category for reduce function  --- map through all categories?
   // Break out into seperate function! Then map through returned object to apply reduce to each item
-  const categories = ['Ones', 'Twos', 'Threez', 'Fourz', 'Fivez', 'Sixes', 'ThreeKindOMG', 'Fourokind', 'FullHouse', 'SmStraight', 'FullStraight', 'HellzYeahYahtzee', 'Chance']
-  const arrCategories = categories.map( (c,i) => pizzaExport.pizza.yahtzee(c, roll))
+  // const categories = ['Ones', 'Twos', 'Threez', 'Fourz', 'Fivez', 'Sixes', 'ThreeKindOMG', 'Fourokind', 'FullHouse', 'SmStraight', 'FullStraight', 'HellzYeahYahtzee', 'Chance']
+  // const arrCategories = categories.map( (c,i) => pizzaExport.pizza.yahtzee(c, roll))
   //return roll
   // TODO update msg (first parameter of reduce) to reflect roll and results of pizza.yahtzee
   //TODO: actually call pizza yahtzee here
@@ -25,17 +27,13 @@ const rollTheDie = (e) => {
   update(window.yahtzee.state)
 }
 
-const createDie = (roll) => {
-    roll.forEach( (c,i,a) => {
+const createDieElements = (roll) => {
+    roll.forEach( (dice,index) => {
       let divNode = document.createElement('div')
-      divNode.id = i
+      divNode.id = index
       divNode.className = 'die'
-      document.getElementById('dice').appendChild(divNode).innerHTML = c
+      document.getElementById('dice').appendChild(divNode).innerHTML = dice
     })
-}
-
-const randomNumber = (min, max) =>  {
-  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 rollDieButton.addEventListener('click', rollTheDie)

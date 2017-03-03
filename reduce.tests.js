@@ -192,3 +192,11 @@ test('should apply Chance correctly', t => {
     t.deepEqual(actual, casesChance[i].expected)
   })
 })
+
+
+test('should update roll state if message is roll action something', t => {
+  var rolled = [1,2,3,4,5]
+  var actual = reduceExport.reduce({category:'rolled-dice', value: rolled}, {roll: []})
+
+  t.deepEqual(actual.roll, rolled)
+})

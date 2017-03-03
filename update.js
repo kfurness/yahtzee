@@ -1,3 +1,4 @@
+const dice = document.getElementById('dice')
 const ones = document.getElementById('ones')
 const twos = document.getElementById('twos')
 const threez = document.getElementById('threez')

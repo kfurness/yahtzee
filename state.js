@@ -1,4 +1,5 @@
 const state = {
+  roll: [],
   Ones: 0,
   Twos: 0,
   Threez: 0,
@@ -15,9 +16,3 @@ const state = {
 }
 
 window.yahtzee = Object.assign({}, {state})
-
-// module.exports = {
-//   state : {
-//     ThreeKindOMG: 0
-//   }
-// }

@@ -76,148 +76,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var reduce = exports.reduce = function reduce(msg, state) {
-  switch (msg.category) {
-    case 'Ones':
-      return Object.assign({}, state, { Ones: msg.value });
-    case 'Twos':
-      return Object.assign({}, state, { Twos: msg.value });
-    case 'Threez':
-      return Object.assign({}, state, { Threez: msg.value });
-    case 'Fourz':
-      return Object.assign({}, state, { Fourz: msg.value });
-    case 'Fivez':
-      return Object.assign({}, state, { Fivez: msg.value });
-    case 'Sixes':
-      return Object.assign({}, state, { Sixes: msg.value });
-    case 'ThreeKindOMG':
-      return Object.assign({}, state, { ThreeKindOMG: msg.value });
-    case 'Fourokind':
-      return Object.assign({}, state, { Fourokind: msg.value });
-    case 'FullHouse':
-      return Object.assign({}, state, { FullHouse: msg.value });
-    case 'SmStraight':
-      return Object.assign({}, state, { SmStraight: msg.value });
-    case 'FullStraight':
-      return Object.assign({}, state, { FullStraight: msg.value });
-    case 'HellzYeahYahtzee':
-      return Object.assign({}, state, { HellzYeahYahtzee: msg.value });
-    case 'Chance':
-      return Object.assign({}, state, { Chance: msg.value });
-    default:
-      return 'error';
-  }
-};
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var ones = document.getElementById('ones');
-var twos = document.getElementById('twos');
-var threez = document.getElementById('threez');
-var fourz = document.getElementById('fourz');
-var fivez = document.getElementById('fivez');
-var sixes = document.getElementById('sixes');
-var threeKind = document.getElementById('threeKind');
-var fourokind = document.getElementById('fourokind');
-var fullhouse = document.getElementById('fullHouse');
-var smStraight = document.getElementById('smStraight');
-var fullStraight = document.getElementById('fullStraight');
-var hellzYeahYahtzee = document.getElementById('hellzYeahYahtzee');
-var chance = document.getElementById('chance');
-
-var update = exports.update = function update(state) {
-  ones.innerHTML = state.Ones;
-  twos.innerHTML = state.Twos;
-  threez.innerHTML = state.Threez;
-  fourz.innerHTML = state.Fourz;
-  fivez.innerHTML = state.Fivez;
-  sixes.innerHTML = state.Sixes;
-  threeKind.innerHTML = state.ThreeKindOMG;
-  fourokind.innerHTML = state.Fourokind;
-  fullhouse.innerHTML = state.FullHouse;
-  smStraight.innerHTML = state.SmStraight;
-  fullStraight.innerHTML = state.FullStraight;
-  hellzYeahYahtzee.innerHTML = state.HellzYeahYahtzee;
-  chance.innerHTML = state.Chance;
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _reduce = __webpack_require__(0);
-
-var _update = __webpack_require__(1);
-
-var _pizza = __webpack_require__(3);
-
-var pizzaExport = _interopRequireWildcard(_pizza);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var rollDieButton = document.getElementById('rollDie');
-var dice = document.getElementById('dice');
-var roll = [];
-
-var rollTheDie = function rollTheDie(e) {
-  roll = [];
-  for (var i = 0; i < 5; i++) {
-    var randomNum = randomNumber(1, 6);
-    roll.push(randomNum);
-  }
-  createDie(roll);
-  rollDieButton.style.visibility = 'hidden';
-  // create category for reduce function  --- map through all categories?
-  // Break out into seperate function! Then map through returned object to apply reduce to each item
-  var categories = ['Ones', 'Twos', 'Threez', 'Fourz', 'Fivez', 'Sixes', 'ThreeKindOMG', 'Fourokind', 'FullHouse', 'SmStraight', 'FullStraight', 'HellzYeahYahtzee', 'Chance'];
-  var arrCategories = categories.map(function (c, i) {
-    return pizzaExport.pizza.yahtzee(c, roll);
-  });
-  //return roll
-  // TODO update msg (first parameter of reduce) to reflect roll and results of pizza.yahtzee
-  //TODO: actually call pizza yahtzee here
-  window.yahtzee.state = (0, _reduce.reduce)({ category: 'Chance', value: 13 }, window.yahtzee.state);
-  (0, _update.update)(window.yahtzee.state);
-};
-
-var createDie = function createDie(roll) {
-  roll.forEach(function (c, i, a) {
-    var divNode = document.createElement('div');
-    divNode.id = i;
-    divNode.className = 'die';
-    document.getElementById('dice').appendChild(divNode).innerHTML = c;
-  });
-};
-
-var randomNumber = function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
-rollDieButton.addEventListener('click', rollTheDie);
-
-(0, _update.update)(window.yahtzee.state);
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 var pizza = exports.pizza = {
   yahtzee: function yahtzee(category, dice) {
     var filter = 0;
@@ -390,6 +248,147 @@ var samezies = exports.samezies = function samezies(arr) {
 // }
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var reduce = exports.reduce = function reduce(msg, state) {
+  switch (msg.category) {
+    case 'rolled-dice':
+      return Object.assign({}, state, { roll: msg.value });
+    case 'Ones':
+      return Object.assign({}, state, { Ones: msg.value });
+    case 'Twos':
+      return Object.assign({}, state, { Twos: msg.value });
+    case 'Threez':
+      return Object.assign({}, state, { Threez: msg.value });
+    case 'Fourz':
+      return Object.assign({}, state, { Fourz: msg.value });
+    case 'Fivez':
+      return Object.assign({}, state, { Fivez: msg.value });
+    case 'Sixes':
+      return Object.assign({}, state, { Sixes: msg.value });
+    case 'ThreeKindOMG':
+      return Object.assign({}, state, { ThreeKindOMG: msg.value });
+    case 'Fourokind':
+      return Object.assign({}, state, { Fourokind: msg.value });
+    case 'FullHouse':
+      return Object.assign({}, state, { FullHouse: msg.value });
+    case 'SmStraight':
+      return Object.assign({}, state, { SmStraight: msg.value });
+    case 'FullStraight':
+      return Object.assign({}, state, { FullStraight: msg.value });
+    case 'HellzYeahYahtzee':
+      return Object.assign({}, state, { HellzYeahYahtzee: msg.value });
+    case 'Chance':
+      return Object.assign({}, state, { Chance: msg.value });
+    default:
+      return 'error';
+  }
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var dice = document.getElementById('dice');
+var ones = document.getElementById('ones');
+var twos = document.getElementById('twos');
+var threez = document.getElementById('threez');
+var fourz = document.getElementById('fourz');
+var fivez = document.getElementById('fivez');
+var sixes = document.getElementById('sixes');
+var threeKind = document.getElementById('threeKind');
+var fourokind = document.getElementById('fourokind');
+var fullhouse = document.getElementById('fullHouse');
+var smStraight = document.getElementById('smStraight');
+var fullStraight = document.getElementById('fullStraight');
+var hellzYeahYahtzee = document.getElementById('hellzYeahYahtzee');
+var chance = document.getElementById('chance');
+
+var update = exports.update = function update(state) {
+  ones.innerHTML = state.Ones;
+  twos.innerHTML = state.Twos;
+  threez.innerHTML = state.Threez;
+  fourz.innerHTML = state.Fourz;
+  fivez.innerHTML = state.Fivez;
+  sixes.innerHTML = state.Sixes;
+  threeKind.innerHTML = state.ThreeKindOMG;
+  fourokind.innerHTML = state.Fourokind;
+  fullhouse.innerHTML = state.FullHouse;
+  smStraight.innerHTML = state.SmStraight;
+  fullStraight.innerHTML = state.FullStraight;
+  hellzYeahYahtzee.innerHTML = state.HellzYeahYahtzee;
+  chance.innerHTML = state.Chance;
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _reduce = __webpack_require__(1);
+
+var _update = __webpack_require__(2);
+
+var _pizza = __webpack_require__(0);
+
+var pizzaExport = _interopRequireWildcard(_pizza);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var rollDieButton = document.getElementById('rollDie');
+// const dice = document.getElementById('dice')
+var roll = [];
+
+var rollTheDie = function rollTheDie(e) {
+  roll = [];
+  for (var i = 0; i < 5; i++) {
+    var randomNum = randomNumber(1, 6);
+    roll.push(randomNum);
+  }
+
+  window.yahtzee.state = (0, _reduce.reduce)({ category: 'rolled-dice', value: roll }, window.yahtzee.state);
+  createDieElements(roll);
+  rollDieButton.style.visibility = 'hidden';
+  // create category for reduce function  --- map through all categories?
+  // Break out into seperate function! Then map through returned object to apply reduce to each item
+  // const categories = ['Ones', 'Twos', 'Threez', 'Fourz', 'Fivez', 'Sixes', 'ThreeKindOMG', 'Fourokind', 'FullHouse', 'SmStraight', 'FullStraight', 'HellzYeahYahtzee', 'Chance']
+  // const arrCategories = categories.map( (c,i) => pizzaExport.pizza.yahtzee(c, roll))
+  //return roll
+  // TODO update msg (first parameter of reduce) to reflect roll and results of pizza.yahtzee
+  //TODO: actually call pizza yahtzee here
+  window.yahtzee.state = (0, _reduce.reduce)({ category: 'Chance', value: 13 }, window.yahtzee.state);
+  (0, _update.update)(window.yahtzee.state);
+};
+
+var createDieElements = function createDieElements(roll) {
+  roll.forEach(function (dice, index) {
+    var divNode = document.createElement('div');
+    divNode.id = index;
+    divNode.className = 'die';
+    document.getElementById('dice').appendChild(divNode).innerHTML = dice;
+  });
+};
+
+rollDieButton.addEventListener('click', rollTheDie);
+
+(0, _update.update)(window.yahtzee.state);
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -397,6 +396,7 @@ var samezies = exports.samezies = function samezies(arr) {
 
 
 var state = {
+  roll: [],
   Ones: 0,
   Twos: 0,
   Threez: 0,
@@ -414,12 +414,6 @@ var state = {
 
 window.yahtzee = Object.assign({}, { state: state });
 
-// module.exports = {
-//   state : {
-//     ThreeKindOMG: 0
-//   }
-// }
-
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -427,11 +421,11 @@ window.yahtzee = Object.assign({}, { state: state });
 "use strict";
 
 
-__webpack_require__(0);
 __webpack_require__(1);
-__webpack_require__(3);
-__webpack_require__(4);
 __webpack_require__(2);
+__webpack_require__(0);
+__webpack_require__(4);
+__webpack_require__(3);
 
 /***/ })
 /******/ ]);
