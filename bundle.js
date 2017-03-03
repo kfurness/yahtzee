@@ -160,6 +160,12 @@ var _reduce = __webpack_require__(0);
 
 var _update = __webpack_require__(1);
 
+var _pizza = __webpack_require__(3);
+
+var pizzaExport = _interopRequireWildcard(_pizza);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 var rollDieButton = document.getElementById('rollDie');
 var dice = document.getElementById('dice');
 var roll = [];
@@ -172,10 +178,16 @@ var rollTheDie = function rollTheDie(e) {
   }
   createDie(roll);
   rollDieButton.style.visibility = 'hidden';
+  // create category for reduce function  --- map through all categories?
+  // Break out into seperate function! Then map through returned object to apply reduce to each item
+  var categories = ['Ones', 'Twos', 'Threez', 'Fourz', 'Fivez', 'Sixes', 'ThreeKindOMG', 'Fourokind', 'FullHouse', 'SmStraight', 'FullStraight', 'HellzYeahYahtzee', 'Chance'];
+  var arrCategories = categories.map(function (c, i) {
+    return pizzaExport.pizza.yahtzee(c, roll);
+  });
   //return roll
   // TODO update msg (first parameter of reduce) to reflect roll and results of pizza.yahtzee
   //TODO: actually call pizza yahtzee here
-  window.yahtzee.state = (0, _reduce.reduce)({ category: 'HellzYeahYahtzee', value: 50 }, window.yahtzee.state);
+  window.yahtzee.state = (0, _reduce.reduce)({ category: 'Chance', value: 13 }, window.yahtzee.state);
   (0, _update.update)(window.yahtzee.state);
 };
 
@@ -208,7 +220,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var pizza = exports.pizza = {
   yahtzee: function yahtzee(category, dice) {
-    var filter = 1;
+    var filter = 0;
     var obj = module.exports.objectMaker(dice);
     var keys = Object.keys(obj);
     var valArr = keys.map(function (key) {
@@ -216,6 +228,9 @@ var pizza = exports.pizza = {
     });
     var ordered = dice.sort(module.exports.compareFunc());
     switch (category) {
+      case 'Ones':
+        filter = 1;
+        break;
       case 'Twos':
         filter = 2;
         break;
@@ -233,7 +248,7 @@ var pizza = exports.pizza = {
         break;
       case 'ThreeKindOMG':
         return valArr.includes(3) ? 18 : 0;
-      case '4okind':
+      case 'Fourokind':
         var properties = Object.keys(obj);
         var match = module.exports.findTheIndexOfAMatch(obj, 4);
         return typeof match === 'number' ? properties[match] * 4 : 0;
@@ -316,7 +331,7 @@ var samezies = exports.samezies = function samezies(arr) {
 //           break
 //         case '3kindomg':
 //           return valArr.includes(3) ? 18 : 0
-//         case '4okind':
+//         case 'Fourokind':
 //           let properties = Object.keys(obj)
 //           let match = module.exports.findTheIndexOfAMatch(obj, 4)
 //           return typeof match === 'number' ? properties[match] * 4 : 0

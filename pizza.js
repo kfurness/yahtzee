@@ -1,11 +1,14 @@
 export const pizza = {
   yahtzee: (category, dice) => {
-    let filter = 1
+    let filter = 0
     let obj = module.exports.objectMaker(dice)
      let keys = Object.keys(obj)
      let valArr = keys.map( key =>  obj[key])
     let ordered = dice.sort(module.exports.compareFunc())
     switch(category){
+      case 'Ones':
+        filter = 1;
+        break;
       case 'Twos':
         filter = 2;
         break;
@@ -23,7 +26,7 @@ export const pizza = {
         break
       case 'ThreeKindOMG':
         return valArr.includes(3) ? 18 : 0
-      case '4okind':
+      case 'Fourokind':
         let properties = Object.keys(obj)
         let match = module.exports.findTheIndexOfAMatch(obj, 4)
         return typeof match === 'number' ? properties[match] * 4 : 0
@@ -105,7 +108,7 @@ export const objectMaker = (dice) => {
 //           break
 //         case '3kindomg':
 //           return valArr.includes(3) ? 18 : 0
-//         case '4okind':
+//         case 'Fourokind':
 //           let properties = Object.keys(obj)
 //           let match = module.exports.findTheIndexOfAMatch(obj, 4)
 //           return typeof match === 'number' ? properties[match] * 4 : 0
