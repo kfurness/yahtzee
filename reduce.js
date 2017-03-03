@@ -25,6 +25,8 @@ export const reduce = (msg, state) => {
       return Object.assign({}, state, {FullStraight: msg.value})
     case 'HellzYeahYahtzee':
       return Object.assign({}, state, {HellzYeahYahtzee: msg.value})
+    case 'Chance':
+      return Object.assign({}, state, {Chance: msg.value})
     default:
       return 'error'
   }

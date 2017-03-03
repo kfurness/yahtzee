@@ -102,6 +102,8 @@ var reduce = exports.reduce = function reduce(msg, state) {
       return Object.assign({}, state, { FullStraight: msg.value });
     case 'HellzYeahYahtzee':
       return Object.assign({}, state, { HellzYeahYahtzee: msg.value });
+    case 'Chance':
+      return Object.assign({}, state, { Chance: msg.value });
     default:
       return 'error';
   }
@@ -173,7 +175,7 @@ var rollTheDie = function rollTheDie(e) {
   //return roll
   // TODO update msg (first parameter of reduce) to reflect roll and results of pizza.yahtzee
   //TODO: actually call pizza yahtzee here
-  window.yahtzee.state = (0, _reduce.reduce)({ category: 'SmStraight', value: 30 }, window.yahtzee.state);
+  window.yahtzee.state = (0, _reduce.reduce)({ category: 'HellzYeahYahtzee', value: 50 }, window.yahtzee.state);
   (0, _update.update)(window.yahtzee.state);
 };
 
