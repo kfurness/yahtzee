@@ -166,3 +166,16 @@ test('should apply FullStraight correctly', t => {
     t.deepEqual(actual, casesFullStraight[i].expected)
   })
 })
+
+
+let casesHellzYeahYahtzee = [
+  {expected: {Ones:  0, Twos: 0, Threez: 0, Fourz: 0, Fivez: 0, Sixes: 0, ThreeKindOMG: 0, Fourokind: 0, FullHouse: 0, SmStraight: 0, FullStraight: 0, HellzYeahYahtzee: 50, Chance: 0}, msg: {category: 'HellzYeahYahtzee', value: 50}, state: state},
+]
+
+test('should apply HellzYeahYahtzee correctly', t => {
+  casesHellzYeahYahtzee.forEach( (c,i) => {
+    const actual = reduceExport.reduce(casesHellzYeahYahtzee[i].msg, casesHellzYeahYahtzee[i].state)
+
+    t.deepEqual(actual, casesHellzYeahYahtzee[i].expected)
+  })
+})

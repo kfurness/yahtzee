@@ -100,6 +100,8 @@ var reduce = exports.reduce = function reduce(msg, state) {
       return Object.assign({}, state, { SmStraight: msg.value });
     case 'FullStraight':
       return Object.assign({}, state, { FullStraight: msg.value });
+    case 'HellzYeahYahtzee':
+      return Object.assign({}, state, { HellzYeahYahtzee: msg.value });
     default:
       return 'error';
   }
