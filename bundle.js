@@ -76,6 +76,30 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var roller = exports.roller = function roller() {
+  var roll = [];
+  for (var i = 0; i < 5; i++) {
+    var randomNum = randomNumber(1, 6);
+    roll.push(randomNum);
+  }
+  console.log(roll);
+  return roll;
+};
+
+var randomNumber = function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var pizza = exports.pizza = {
   yahtzee: function yahtzee(category, dice) {
     var filter = 0;
@@ -248,7 +272,7 @@ var samezies = exports.samezies = function samezies(arr) {
 // }
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -293,7 +317,36 @@ var reduce = exports.reduce = function reduce(msg, state) {
 };
 
 /***/ }),
-/* 2 */
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var state = exports.state = {
+  roll: [],
+  Ones: 0,
+  Twos: 0,
+  Threez: 0,
+  Fourz: 0,
+  Fivez: 0,
+  Sixes: 0,
+  ThreeKindOMG: 0,
+  Fourokind: 0,
+  FullHouse: 0,
+  SmStraight: 0,
+  FullStraight: 0,
+  HellzYeahYahtzee: 0,
+  Chance: 0
+};
+
+window.yahtzee = Object.assign({}, { state: state });
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -331,48 +384,7 @@ var update = exports.update = function update(state) {
   fullStraight.innerHTML = state.FullStraight;
   hellzYeahYahtzee.innerHTML = state.HellzYeahYahtzee;
   chance.innerHTML = state.Chance;
-};
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _reduce = __webpack_require__(1);
-
-var _update = __webpack_require__(2);
-
-var _pizza = __webpack_require__(0);
-
-var pizzaExport = _interopRequireWildcard(_pizza);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var rollDieButton = document.getElementById('rollDie');
-// const dice = document.getElementById('dice')
-var roll = [];
-
-var rollTheDie = function rollTheDie(e) {
-  roll = [];
-  for (var i = 0; i < 5; i++) {
-    var randomNum = randomNumber(1, 6);
-    roll.push(randomNum);
-  }
-
-  window.yahtzee.state = (0, _reduce.reduce)({ category: 'rolled-dice', value: roll }, window.yahtzee.state);
-  createDieElements(roll);
-  rollDieButton.style.visibility = 'hidden';
-  // create category for reduce function  --- map through all categories?
-  // Break out into seperate function! Then map through returned object to apply reduce to each item
-  // const categories = ['Ones', 'Twos', 'Threez', 'Fourz', 'Fivez', 'Sixes', 'ThreeKindOMG', 'Fourokind', 'FullHouse', 'SmStraight', 'FullStraight', 'HellzYeahYahtzee', 'Chance']
-  // const arrCategories = categories.map( (c,i) => pizzaExport.pizza.yahtzee(c, roll))
-  //return roll
-  // TODO update msg (first parameter of reduce) to reflect roll and results of pizza.yahtzee
-  //TODO: actually call pizza yahtzee here
-  window.yahtzee.state = (0, _reduce.reduce)({ category: 'Chance', value: 13 }, window.yahtzee.state);
-  (0, _update.update)(window.yahtzee.state);
+  createDieElements(state.roll);
 };
 
 var createDieElements = function createDieElements(roll) {
@@ -384,36 +396,6 @@ var createDieElements = function createDieElements(roll) {
   });
 };
 
-rollDieButton.addEventListener('click', rollTheDie);
-
-(0, _update.update)(window.yahtzee.state);
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var state = {
-  roll: [],
-  Ones: 0,
-  Twos: 0,
-  Threez: 0,
-  Fourz: 0,
-  Fivez: 0,
-  Sixes: 0,
-  ThreeKindOMG: 0,
-  Fourokind: 0,
-  FullHouse: 0,
-  SmStraight: 0,
-  FullStraight: 0,
-  HellzYeahYahtzee: 0,
-  Chance: 0
-};
-
-window.yahtzee = Object.assign({}, { state: state });
-
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -421,11 +403,37 @@ window.yahtzee = Object.assign({}, { state: state });
 "use strict";
 
 
-__webpack_require__(1);
-__webpack_require__(2);
-__webpack_require__(0);
-__webpack_require__(4);
-__webpack_require__(3);
+var _reduce = __webpack_require__(2);
+
+var _update = __webpack_require__(4);
+
+var _dice_roll = __webpack_require__(0);
+
+var _state = __webpack_require__(3);
+
+var _pizza = __webpack_require__(1);
+
+var pizzaExport = _interopRequireWildcard(_pizza);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+console.log(pizzaExport);
+
+var rollDieButton = document.getElementById('rollDie');
+
+rollDieButton.addEventListener('click', function () {
+  var categories = ['Ones', 'Twos', 'Threez', 'Fourz', 'Fivez', 'Sixes', 'ThreeKindOMG', 'Fourokind', 'FullHouse', 'SmStraight', 'FullStraight', 'HellzYeahYahtzee', 'Chance'];
+  window.yahtzee.state = (0, _reduce.reduce)({ category: 'rolled-dice', value: (0, _dice_roll.roller)() }, window.yahtzee.state);
+  rollDieButton.style.visibility = 'hidden';
+  categories.forEach(function (category, index) {
+    window.yahtzee.state = (0, _reduce.reduce)({ category: category, value: pizzaExport.pizza.yahtzee(category, window.yahtzee.state.roll) }, window.yahtzee.state);
+  });
+  (0, _update.update)(window.yahtzee.state);
+});
+
+(0, _update.update)(window.yahtzee.state);
+
+// draw what we built
 
 /***/ })
 /******/ ]);

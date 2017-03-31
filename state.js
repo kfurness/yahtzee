@@ -1,4 +1,4 @@
-const state = {
+export const state = {
   roll: [],
   Ones: 0,
   Twos: 0,

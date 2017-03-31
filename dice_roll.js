@@ -4,6 +4,7 @@ export const roller =  () => {
       const randomNum = randomNumber(1,6)
       roll.push(randomNum)
     }
+    console.log(roll);
     return roll
 }
 

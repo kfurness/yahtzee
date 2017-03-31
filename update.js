@@ -27,4 +27,14 @@ export const update = (state) => {
   fullStraight.innerHTML = state.FullStraight
   hellzYeahYahtzee.innerHTML = state.HellzYeahYahtzee
   chance.innerHTML = state.Chance
+  createDieElements(state.roll)
+}
+
+const createDieElements = (roll) => {
+    roll.forEach( (dice,index) => {
+      let divNode = document.createElement('div')
+      divNode.id = index
+      divNode.className = 'die'
+      document.getElementById('dice').appendChild(divNode).innerHTML = dice
+    })
 }
